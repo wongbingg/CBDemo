@@ -53,7 +53,7 @@ class BluetoothSerial: NSObject {
   func startScan() {
     guard centralManager.state == .poweredOn else { return }
     
-    /// CBCentralManager의 메서드인 scanForPeripherals(withServices:options:)를 호출하여 연결가능한 기기들을 검색. 
+    /// CBCentralManager의 메서드인 scanForPeripherals(withServices:options:)를 호출하여 연결가능한 기기들을 검색.
 //    centralManager.scanForPeripherals(withServices: [serviceUUID], options: nil)
     centralManager.scanForPeripherals(withServices: nil, options: nil)
     
@@ -85,14 +85,9 @@ extension BluetoothSerial: CBCentralManagerDelegate {
     connectedPeripheral = nil
   }
   
-  func centralManager(_ central: CBCentralManager, didUpdateANCSAuthorizationFor peripheral: CBPeripheral) {
-    pendingPeripheral = nil
-    connectedPeripheral = nil
-  }
-  
   func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-    // RSSI 는 기기의 신호 강도를 의미
-    // TODO: 기기가 검색될 때마다 필요한 코드를 여기서 작성
+    /// RSSI 는 기기의 신호 강도를 의미
+    /// 기기가 검색될 때마다 필요한 코드를 여기서 작성
     delegate?.serialDidDiscoverPeripheral(peripheral: peripheral, RSSI: RSSI)
   }
   
@@ -110,29 +105,37 @@ extension BluetoothSerial: CBCentralManagerDelegate {
 
 extension BluetoothSerial: CBPeripheralDelegate {
   
+  /// 서비스 검색에 성공 시 호출되는 메서드
   func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: (any Error)?) {
     for service in peripheral.services! {
       peripheral.discoverCharacteristics([characteristicUUID], for: service)
     }
   }
   
+  /// characteristic 검색에 성공 시 호출되는 메서드
   func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: (any Error)?) {
     for characteristic in service.characteristics! {
       if characteristic.uuid == characteristicUUID {
+        /// 해당 기기의 데이터 구독 시작
         peripheral.setNotifyValue(true, for: characteristic)
+        /// 데이터를 보내기 위한 characteristic을 저장
         writeCharacteristic = characteristic
+        /// characteristic의 속성에 따라 데이터를 보내는 type을 설정
         writeType = characteristic.properties.contains(.write) ? .withResponse : .withoutResponse
+        /// 연결된 기기와 통신을 시작하기 위해 delegate 메서드 호출
         delegate?.serialDidConnectPeripheral(peripheral: peripheral)
       }
     }
   }
   
   func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: (any Error)?) {
-    //
+    /// writeType이 .withResponse인 경우에만 호출되는 메서드
+    /// 응답을 처리하는 코드를 작성 (Optional)
   }
   
   func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: (any Error)?) {
-    //
+    /// 블루투스 기기의 신호 강도를 요청하는 peripheral,readRSSI() 가 호출하는 함수.
+    /// 신호 강도와 관련된 데이터를 처리하는 코드를 작성 (Optional)
   }
 }
 
