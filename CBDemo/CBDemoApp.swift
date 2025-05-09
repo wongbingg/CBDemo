@@ -15,3 +15,5 @@ struct CBDemoApp: App {
         }
     }
 }
+
+//https://staktree.github.io/ios/iOS-Bluetooth-02-search-peripheral/

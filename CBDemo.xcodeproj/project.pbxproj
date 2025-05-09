@@ -14,6 +14,10 @@
 		37E417582DCC88CD00DB42E0 /* CBDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E417572DCC88CD00DB42E0 /* CBDemoTests.swift */; };
 		37E417622DCC88CD00DB42E0 /* CBDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E417612DCC88CD00DB42E0 /* CBDemoUITests.swift */; };
 		37E417642DCC88CD00DB42E0 /* CBDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E417632DCC88CD00DB42E0 /* CBDemoUITestsLaunchTests.swift */; };
+		37E417722DCC8C5C00DB42E0 /* BluetoothSerial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E417712DCC8C5C00DB42E0 /* BluetoothSerial.swift */; };
+		37E417742DCC92DA00DB42E0 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E417732DCC92DA00DB42E0 /* ScanView.swift */; };
+		37E417762DCC94EC00DB42E0 /* ScanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E417752DCC94EC00DB42E0 /* ScanTableViewCell.swift */; };
+		37E4177A2DCD786B00DB42E0 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E417792DCD786A00DB42E0 /* ScanViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		37E4175D2DCC88CD00DB42E0 /* CBDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CBDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		37E417612DCC88CD00DB42E0 /* CBDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBDemoUITests.swift; sourceTree = "<group>"; };
 		37E417632DCC88CD00DB42E0 /* CBDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		37E417712DCC8C5C00DB42E0 /* BluetoothSerial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothSerial.swift; sourceTree = "<group>"; };
+		37E417732DCC92DA00DB42E0 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
+		37E417752DCC94EC00DB42E0 /* ScanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanTableViewCell.swift; sourceTree = "<group>"; };
+		37E417792DCD786A00DB42E0 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +104,10 @@
 			children = (
 				37E417462DCC88CC00DB42E0 /* CBDemoApp.swift */,
 				37E417482DCC88CC00DB42E0 /* ContentView.swift */,
+				37E417732DCC92DA00DB42E0 /* ScanView.swift */,
+				37E417792DCD786A00DB42E0 /* ScanViewController.swift */,
+				37E417752DCC94EC00DB42E0 /* ScanTableViewCell.swift */,
+				37E417702DCC8C4600DB42E0 /* CBLib */,
 				37E4174A2DCC88CD00DB42E0 /* Assets.xcassets */,
 				37E4174C2DCC88CD00DB42E0 /* Preview Content */,
 			);
@@ -125,6 +137,14 @@
 				37E417632DCC88CD00DB42E0 /* CBDemoUITestsLaunchTests.swift */,
 			);
 			path = CBDemoUITests;
+			sourceTree = "<group>";
+		};
+		37E417702DCC8C4600DB42E0 /* CBLib */ = {
+			isa = PBXGroup;
+			children = (
+				37E417712DCC8C5C00DB42E0 /* BluetoothSerial.swift */,
+			);
+			path = CBLib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +278,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				37E417492DCC88CC00DB42E0 /* ContentView.swift in Sources */,
+				37E4177A2DCD786B00DB42E0 /* ScanViewController.swift in Sources */,
+				37E417742DCC92DA00DB42E0 /* ScanView.swift in Sources */,
+				37E417762DCC94EC00DB42E0 /* ScanTableViewCell.swift in Sources */,
 				37E417472DCC88CC00DB42E0 /* CBDemoApp.swift in Sources */,
+				37E417722DCC8C5C00DB42E0 /* BluetoothSerial.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +449,7 @@
 				DEVELOPMENT_TEAM = 977T7GZZBD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "주변 블루투스 기기 검색을 위해 권한을 허용해주세요.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -454,6 +479,7 @@
 				DEVELOPMENT_TEAM = 977T7GZZBD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "주변 블루투스 기기 검색을 위해 권한을 허용해주세요.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
